@@ -37,13 +37,9 @@ def test_beam_search_decoder():
     
     # run CTC beam search decoder in tensorflow
     with tf.Session() as sess:
-        decoded, log_probabilities = tf.nn.ctc_beam_search_decoder(inputs_t, 
-                                                              [max_time_steps], 
-                                                              beam_width=beam_size, 
-                                                              top_paths=num_results_per_sample, 
-                                                              merge_repeated=False)
+        decoded, log_probabilities = tf.nn.ctc_beam_search_decoder(inputs_t,[max_time_steps],beam_width=beam_size,top_paths=num_results_per_sample,merge_repeated=False)
         tf_decoded = sess.run(decoded)
-	tf_log_probs = sess.run(log_probabilities)        
+        tf_log_probs = sess.run(log_probabilities)        
     
 
     # run original CTC beam search decoder     
